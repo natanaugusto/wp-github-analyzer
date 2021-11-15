@@ -1,0 +1,7 @@
+/* block.css */
+div.github-analizer-block {
+	border: 1px darkgray solid;
+	border-left-width: 5px;
+	padding: 10px 15px;
+	margin: 30px;
+}

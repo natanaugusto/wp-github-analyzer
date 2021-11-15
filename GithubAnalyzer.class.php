@@ -21,22 +21,15 @@ class GithubAnalyzer
 
     public function __construct()
     {
-        register_activation_hook(__FILE__, [$this, 'activate']);
-        register_deactivation_hook(__FILE__, [$this, 'deactivate']);
-    }
-
-    public function deactivate()
-    {
-        remove_action('enqueue_block_editor_assets', [$this, 'action_enqueue_block_editor_assets']);
-        remove_action('wp_enqueue_scripts', [$this, 'action_wp_enqueue_scripts']);
+        $this->add_actions();
     }
 
     /**
-     * Activate the plugin
+     * Add action plugin
      *
      * @return void
      */
-    public function activate()
+    public function add_actions()
     {
         add_action('enqueue_block_editor_assets', [$this, 'action_enqueue_block_editor_assets']);
         add_action('wp_enqueue_scripts', [$this, 'action_wp_enqueue_scripts']);
@@ -48,9 +41,22 @@ class GithubAnalyzer
      */
     public function action_wp_enqueue_scripts(): void
     {
+		wp_enqueue_script(
+			'jquery',
+			plugins_url('assets/scripts/jquery.js', __FILE__),
+			['wp-blocks', 'wp-element']
+		);
+
+        wp_enqueue_script(
+            $this->handleName . '-github',
+            plugins_url('assets/scripts/github.js', __FILE__),
+            ['wp-blocks', 'wp-element']
+        );
+
+
         wp_enqueue_style(
-            $this->handleName,
-            plugins_url('block.css', __FILE__),
+            $this->handleName . '-style',
+            plugins_url('assets/styles/block.css', __FILE__),
             []
         );
     }
@@ -64,16 +70,15 @@ class GithubAnalyzer
         // WP Enqueue
         wp_enqueue_script(
             $this->handleName,
-            plugins_url('block.js', __FILE__),
+            plugins_url('assets/scripts/block.js', __FILE__),
             ['wp-blocks', 'wp-element']
         );
         wp_enqueue_style(
             $this->handleName,
-            plugins_url('block.css', __FILE__),
+            plugins_url('assets/scripts/block.css', __FILE__),
             []
         );
     }
-
 }
 
 new GithubAnalyzer();
