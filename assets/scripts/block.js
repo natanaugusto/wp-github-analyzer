@@ -7,9 +7,9 @@ wp.blocks.registerBlockType("github-analyzer/github-analizer-block", {
 	category: "embed",
 
 	attributes: {
-		type: { type: "string", default: "default" },
-		title: { type: "string" },
-		content: { type: "array", source: "children", selector: "p" },
+		type:		{ type: "string", default: "default" },
+		title:		{ type: "string" },
+		content:	{ type: "array", source: "children", selector: "p" },
 	},
 
 	edit: (props) => {
@@ -23,9 +23,9 @@ wp.blocks.registerBlockType("github-analyzer/github-analizer-block", {
 			},
 			el("label", null, "GitHub Search:"),
 			el("input", {
-				id: "github-search",
-				name: "github-search",
-				type: "text",
+				id:		"github-search",
+				name:	"github-search",
+				type:	"text",
 				placeholder:
 					props.attributes.hasOwnProperty("input_search_placeholder") &&
 					props.attributes.input_search_placeholder !== null
@@ -43,9 +43,9 @@ wp.blocks.registerBlockType("github-analyzer/github-analizer-block", {
 			},
 			el("label", null, "GitHub Search:"),
 			el("input", {
-				id: "github-search",
-				name: "github-search",
-				type: "text",
+				id:		"github-search",
+				name:	"github-search",
+				type:	"text",
 				placeholder:
 					props.attributes.hasOwnProperty("input_search_placeholder") &&
 					props.attributes.input_search_placeholder !== null

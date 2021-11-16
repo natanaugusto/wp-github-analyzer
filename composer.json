@@ -1,0 +1,22 @@
+{
+    "name": "natanaugusto/wp-github-analyzer",
+    "description": "A simple WordPress Plugin to analyzer GitHub Profiles/Repositories",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Natan Augusto",
+            "email": "natanaugusto@gmail.com"
+        }
+    ],
+    "require": {
+		"php": ">=7.4"
+	},
+	"config": {
+		"vendor-dir": "lib"
+	},
+	"autoload": {
+		"psr-4": {
+			"GithubAnalyzer\\": "src/"
+		}
+	}
+}
