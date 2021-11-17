@@ -5,3 +5,28 @@ div.github-analizer-block {
 	padding: 10px 15px;
 	margin: 30px;
 }
+
+.github-analizer-block .results {
+	display: none;
+	padding: 10px;
+}
+
+.github-analizer-block .results ul {
+	max-height: 20rem;
+    overflow: scroll;
+    overscroll-behavior: none;
+    background: lightgrey;
+}
+
+.github-analizer-block .results ul div.header {
+	border-bottom: 0.1rem solid gray;
+}
+
+.github-analizer-block .results ul div.header span.total {
+	float: right;
+}
+
+.github-analizer-block .results ul li {
+	list-style: none;
+	border-bottom: 0.1rem solid gray;
+}

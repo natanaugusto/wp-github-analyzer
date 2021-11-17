@@ -26,9 +26,9 @@ class GithubAPI
     }
 
     /**
-     * Get a repository from the GitHub API
-     * @param string $search The respository name
-     * @return object             The response from the GitHub API
+     * Search for repositories from the GitHub API
+     * @param string $search Search subject
+     * @return array The response from the GitHub API
      */
     public function repositores($search = null): array
     {
@@ -36,9 +36,30 @@ class GithubAPI
         return $this->call('search/repositories', [
             'q' => $search,
         ]);
-
     }
 
+	/**
+	 * Search for users from the GitHub API
+	 * @param string $search Search subject
+	 * @return array The response from the GitHub API
+	 * (Yes, that two methods are basicle the same)
+	 */
+    public function users($search = null): array
+    {
+        $this->log("repositores( {$search} )");
+        return $this->call('search/users', [
+            'q' => $search,
+        ]);
+    }
+
+	/**
+	 * Execute a call using wp_remote_get
+	 *
+	 * @param string $endpoint
+	 * @param array $query
+	 *
+	 * @return array
+	 */
 	protected function call(string $endpoint, array $query = []): array
     {
         $url = self::GITHUB_URL . $endpoint;
@@ -65,7 +86,14 @@ class GithubAPI
         return $results['response'];
     }
 
-    protected function log($msg)
+	/**
+	 * Guess what that does?
+	 *
+	 * @param string $msg
+	 *
+	 * @return void
+	 */
+    protected function log(string $msg): void
     {
         log("[GitHub]: " . $msg);
     }

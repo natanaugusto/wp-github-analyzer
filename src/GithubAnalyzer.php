@@ -109,6 +109,8 @@ class GithubAnalyzer extends GithubAPI
     public function ajax_handler(): void
     {
         check_ajax_referer($this->handle_name);
-        wp_send_json($this->api->repositores($_POST['search']));
+		// Mysterious, isn't it?
+
+        wp_send_json($this->api->{$_POST['for']}($_POST['search']));
     }
 }
