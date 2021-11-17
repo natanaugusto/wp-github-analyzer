@@ -27,37 +27,33 @@ const block = (props) => {
 				class: "results",
 			},
 			el(
-				"ul",
-				null,
+				"div",
+				{
+					class: "header",
+				},
 				el(
-					"div",
+					"span",
 					{
-						class: "header",
+						class: "title",
 					},
-					el(
-						"span",
-						{
-							class: "title",
-						},
-						"Results"
-					),
-					el(
-						"span",
-						{
-							class: "total",
-						},
-						"Total: ",
-						el(
-							"span",
-							{
-								class: "value",
-							},
-							"0"
-						)
-					)
+					"Results"
 				),
-				el("li", null, "test")
-			)
+				el(
+					"span",
+					{
+						class: "total",
+					},
+					"Total: ",
+					el(
+						"span",
+						{
+							class: "value",
+						},
+						"0"
+					)
+				)
+			),
+			el("ul", null, el("li", null, "test"))
 		)
 	);
 };

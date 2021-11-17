@@ -16,8 +16,8 @@ class GithubAnalyzer extends GithubAPI
     {
         add_action('plugins_loaded', [$this, 'set_credentials']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
-        add_action("wp_ajax_{$this->handle_name}", [$this, 'ajax_handler']);
-        add_action("wp_ajax_nopriv_{$this->handle_name}", [$this, 'ajax_handler']);
+        add_action("wp_ajax_{$this->handle_name}_search", [$this, 'ajax_search_handler']);
+        add_action("wp_ajax_nopriv_{$this->handle_name}_search", [$this, 'ajax_search_handler']);
         add_action('enqueue_block_editor_assets', [$this, 'enqueue_block_editor_assets']);
 
         add_filter('http_request_timeout', [$this, 'http_request_timeout']);
@@ -106,11 +106,16 @@ class GithubAnalyzer extends GithubAPI
         );
     }
 
-    public function ajax_handler(): void
+	/**
+	 * Handle the search from GitHubAPI
+	 *
+	 * @return void
+	 */
+    public function ajax_search_handler(): void
     {
         check_ajax_referer($this->handle_name);
-		// Mysterious, isn't it?
 
-        wp_send_json($this->api->{$_POST['for']}($_POST['search']));
+		// Mysterious, isn't it?
+        wp_send_json($this->api->{$_POST['type']}($_POST['search']));
     }
 }

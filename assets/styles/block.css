@@ -11,6 +11,14 @@ div.github-analizer-block {
 	padding: 10px;
 }
 
+.github-analizer-block .results div.header {
+	border-bottom: 0.1rem solid gray;
+}
+
+.github-analizer-block .results div.header span.total {
+	float: right;
+}
+
 .github-analizer-block .results ul {
 	max-height: 20rem;
 	overflow: scroll;
@@ -22,20 +30,13 @@ div.github-analizer-block {
 	position: relative;
 }
 
-.github-analizer-block .results ul div.header {
-	border-bottom: 0.1rem solid gray;
-}
-
-.github-analizer-block .results ul div.header span.total {
-	float: right;
-}
-
 .github-analizer-block .results ul li {
 	list-style: none;
 	text-align: right;
 	border-bottom: 0.1rem solid gray;
 	padding: 1rem 0;
 	padding-right: 5rem;
+	cursor: pointer;
 }
 
 .github-analizer-block .results ul li img {
