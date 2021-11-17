@@ -13,9 +13,13 @@ div.github-analizer-block {
 
 .github-analizer-block .results ul {
 	max-height: 20rem;
-    overflow: scroll;
-    overscroll-behavior: none;
-    background: lightgrey;
+	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	background: lightgrey;
+	padding: 0.5rem 2rem;
+	display: block;
+	position: relative;
 }
 
 .github-analizer-block .results ul div.header {
@@ -28,5 +32,15 @@ div.github-analizer-block {
 
 .github-analizer-block .results ul li {
 	list-style: none;
+	text-align: right;
 	border-bottom: 0.1rem solid gray;
+	padding: 1rem 0;
+	padding-right: 5rem;
+}
+
+.github-analizer-block .results ul li img {
+	width: 3rem;
+	margin-left: 0;
+	display: block;
+	position: absolute;
 }

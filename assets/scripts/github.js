@@ -18,13 +18,19 @@ jQuery(document).ready(() => {
 				},
 				(data) => {
 					jQuery(".github-analizer-block .results").show();
+					jQuery(".github-analizer-block .results ul li").remove();
 					jQuery(
 						".github-analizer-block .results ul div.header span.total span.value"
-					).val(data.body.total_count);
-					jQuery(".github-analizer-block .results ul li").remove();
+					).text(0);
+					jQuery(
+						".github-analizer-block .results ul div.header span.total span.value"
+					).text(data.body.total_count);
 					data.body.items.forEach((item) => {
 						jQuery(".github-analizer-block .results ul").append(
-							`<li>${item.login}</li>`
+							`<li>
+								<img src="${item.avatar_url}" />
+								${item.login}
+							</li>`
 						);
 					});
 				}
